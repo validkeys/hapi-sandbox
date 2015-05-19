@@ -1,0 +1,25 @@
+{
+  "name": "hapi-sandbox",
+  "version": "1.0.0",
+  "description": "a test",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/validkeys/hapi-sandbox.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/validkeys/hapi-sandbox/issues"
+  },
+  "homepage": "https://github.com/validkeys/hapi-sandbox",
+  "dependencies": {
+    "good": "^6.1.2",
+    "good-console": "^5.0.0",
+    "hapi": "^8.4.0"
+  }
+}
