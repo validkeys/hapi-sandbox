@@ -1,3 +1,4 @@
 module.exports = [
-  require('./good')
+  require('./good'),
+  require('./hapi-rethinkdb-thinky')
 ];
