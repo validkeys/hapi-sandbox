@@ -11,6 +11,13 @@ module.exports = function() {
       }
     },
     {
+      method:   'GET',
+      path:     '/{tv_show_id}',
+      config:   {
+        handler:  IndexController.show
+      }
+    },
+    {
       method:   'POST',
       path:     '/',
       config:   {

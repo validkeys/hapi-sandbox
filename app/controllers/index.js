@@ -1,9 +1,12 @@
+var TvShow = require('../models/tv_shows'),
+    _      = require('lodash');
+
 module.exports = {
 
   index: function(req, reply) {
 
     // require the model
-    var TvShow = req.server.plugins['hapi-rethinkdb-thinky'].tv_shows;
+    // var TvShow = req.server.plugins['hapi-rethinkdb-thinky'].tv_shows;
 
     // grab all the records
     TvShow.run()
@@ -15,11 +18,29 @@ module.exports = {
       });
   },
 
+  show: function(req, reply) {
+
+    TvShow.get(req.params.tv_show_id)
+      .getJoin()
+      .run()
+      .then(function(result) {
+
+        var actors = result.actors;
+        delete result.actors
+
+        result.actor_ids = _.pluck(actors, 'id');
+
+        var response = {
+          show:   result,
+          actors: actors
+        }
+
+        reply(response);
+      });
+
+  },
 
   create: function(req, reply) {
-    // require the model
-    var TvShow = req.server.plugins['hapi-rethinkdb-thinky'].tv_shows;
-
     var show = new TvShow(req.payload);
 
     show.save()
@@ -30,8 +51,7 @@ module.exports = {
   },
 
   update: function(req, reply) {
-    var TvShow = req.server.plugins['hapi-rethinkdb-thinky'].tv_shows,
-        show   = null;
+    var show   = null;
 
     // if nothing is updated 
     TvShow.get(req.params.tv_show_id)

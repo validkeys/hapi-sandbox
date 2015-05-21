@@ -1,17 +1,14 @@
-// var r           = require('rethinkdb'),
-//     connection  = null;
+var thinky = require('thinky')({
+  host: "localhost",
+  port: 28015,
+  db:   "test"
+});
 
-// exports.connect = function() {
-//   r.connect({host: 'localhost', port: 28015}, function(err, conn) {
-//     if(err) { throw err; }
+thinky._onDbReady.push(function() {
+  console.info("Database Is Ready");
+});
 
-//     // use the test database
-//     conn.use('test');
-//     console.info("RethinkDB Connected to db: "+ conn.database +" on port: " + conn.port);
-//     connection = conn;
-//     console.log(connection);
-//     return connection;
-//   });
-// }
+var r = thinky.r;
 
-// exports.r = connection;
+exports.thinky  = thinky;
+exports.r       = r;
