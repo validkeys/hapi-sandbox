@@ -22,7 +22,6 @@
     "good": "^6.1.2",
     "good-console": "^5.0.0",
     "hapi": "^8.4.0",
-    "hapi-rethinkdb-thinky": "^0.3.0",
     "lodash": "^3.9.1",
     "path": "^0.11.14",
     "rethinkdb": "^2.0.0",
