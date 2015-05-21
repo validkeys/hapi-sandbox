@@ -1,18 +1,29 @@
-module.exports = {
-  method:   'GET',
-  path:     '/',
-  handler:  function(req, reply) {
+var IndexController = require('../controllers/index');
 
-    // require the model
-    var TvShow = req.server.plugins['hapi-rethinkdb-thinky'].tv_shows;
+module.exports = function() {
 
-    // grab all the records
-    TvShow.run()
-      .then(function(result) {
-        reply({tvShows: result});
-      })
-      .catch(function(err) {
-        reply(err);
-      });
-  }
-};
+  return [
+    {
+      method:   'GET',
+      path:     '/',
+      config:   {
+        handler:  IndexController.index
+      }
+    },
+    {
+      method:   'POST',
+      path:     '/',
+      config:   {
+        handler: IndexController.create
+      }
+    },
+    {
+      method:    'PUT',
+      path:      '/{tv_show_id}',
+      config:    {
+        handler: IndexController.update
+      }
+    }
+  ];
+
+}();

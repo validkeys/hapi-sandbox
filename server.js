@@ -1,10 +1,11 @@
 var Hapi = require('hapi'),
-    DB   = require('./app/lib/db');
+    DB   = require('./app/lib/db'),
+    _    = require('lodash');
 
 var server = new Hapi.Server();
 server.connection({ port: 3000, labels: ['api'] });
 
-server.route(require('./app/routes'));
+server.route(_.chain(require('./app/routes')).values().flatten().value());
 
 server.register(
   require('./app/plugins')
