@@ -1,3 +1,5 @@
 module.exports = [
-  require('./good')
+  require('./good'),
+  require('hapi-auth-jwt'),
+  require('./auth')
 ];

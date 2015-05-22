@@ -14,7 +14,10 @@ module.exports = function() {
       method:   'GET',
       path:     '/{tv_show_id}',
       config:   {
-        handler:  IndexController.show
+        handler:  IndexController.show,
+        auth:     {
+          strategy: 'token'
+        }
       }
     },
     {

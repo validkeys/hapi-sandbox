@@ -5,9 +5,6 @@ module.exports = {
 
   index: function(req, reply) {
 
-    // require the model
-    // var TvShow = req.server.plugins['hapi-rethinkdb-thinky'].tv_shows;
-
     // grab all the records
     TvShow.run()
       .then(function(result) {
