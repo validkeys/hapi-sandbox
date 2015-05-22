@@ -2,13 +2,10 @@ var thinky  = require('../lib/db').thinky,
     type    = thinky.type;
 
 var Actors = thinky.createModel('actors', {
-  id:       type.string(),
-  name:     type.string(),
-  tvShowsId: type.string()
+  id:         type.string(),
+  name:       type.string(),
+  tvShowsId:  type.string()
 });
-
-Actors.ensureIndex('tvShowsId');
-
 
 module.exports = Actors;
 

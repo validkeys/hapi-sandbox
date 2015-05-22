@@ -1,8 +1,6 @@
-var thinky = require('thinky')({
-  host: "localhost",
-  port: 28015,
-  db:   "test"
-});
+var dbConfig = require('../config/database');
+
+var thinky = require('thinky')(dbConfig);
 
 thinky._onDbReady.push(function() {
   console.info("Database Is Ready");
